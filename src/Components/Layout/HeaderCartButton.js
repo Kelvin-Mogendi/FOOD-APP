@@ -5,12 +5,12 @@ import ContextProvider from "../../Store/cart-context";
 function HeaderCartButton(props) {
   // function clickHandler() {}
   const ctx = useContext(ContextProvider);
-  const numberOfItems = ctx.items.reduce((acc, item) => {
+  const { items } = ctx;
+  const numberOfItems = items.reduce((acc, item) => {
     // console.log(ctx.items[0].amount);
     // console.log(ctx.items);
-    return acc + ctx.items[0].amount;
+    return acc + item.amount;
   }, 0);
-  const { items } = ctx;
   const [isHighlighted, setIsHighlighted] = useState(false);
   const btnClasses = `${classes.button} ${isHighlighted ? classes.bump : ""}`;
   useEffect(() => {
